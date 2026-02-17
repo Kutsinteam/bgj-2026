@@ -15,5 +15,5 @@ sources/0 = SubResource("TileSetAtlasSource_ybxfq")
 
 [node name="Node2D" type="TileMapLayer"]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAD//wAAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAD//wAAAAAAAAAAAAD+////AAAAAAAAAAD+/wEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_qcstc")

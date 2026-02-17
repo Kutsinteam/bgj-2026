@@ -4,8 +4,6 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-
 [node name="Icon" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(127, 132)
