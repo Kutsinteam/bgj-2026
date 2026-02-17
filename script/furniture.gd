@@ -1,15 +1,19 @@
-extends Node2D
-class_name Furniture
+extends Node2D;
+class_name Furniture;
 
-# SIZE: SML (32x32) MED (48x32) LRG (64x32)
-# TYPE
+var sprite: Sprite2D;
 
-func _init(x: int, y: int):
+func _init(_spriteName: String, x: int = 0, y: int = 0):
+	
+	sprite = Sprite2D.new();
+	add_child(sprite);
+	
+	# Load sprite.
 	
 	self.x = x;
 	self.y = y;
 	
-	return
+	return;
 
 func move(x: int, y: int):
 	
