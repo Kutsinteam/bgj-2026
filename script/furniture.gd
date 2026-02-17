@@ -5,8 +5,8 @@ var sprite: Sprite2D;
 
 func _init(_spriteName: String, x: int = 0, y: int = 0):
 	
-	sprite = Sprite2D.new();
-	add_child(sprite);
+	# sprite = Sprite2D.new();
+	# add_child(sprite);
 	
 	# Load sprite.
 	
