@@ -20,7 +20,6 @@ tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAA
 tile_set = SubResource("TileSet_qcstc")
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(32, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
 position = Vector2(0, -24)
