@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://yj7tnywpy5m8"]
+
+[ext_resource type="Script" uid="uid://xtm8u87t2c7k" path="res://scene/furniture/sml/box_small.gd" id="1_ac7i0"]
+[ext_resource type="Texture2D" uid="uid://bc10idmn0w8kk" path="res://sprite/TEMPLATE1.PNG" id="2_qsgo5"]
+
+[node name="Small Box" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_ac7i0")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("2_qsgo5")
