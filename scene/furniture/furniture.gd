@@ -3,19 +3,19 @@ class_name Furniture
 
 @export var orientation: int = 0 # Will refer to a spritesheet.
 
-func _init(_x: int = 0, _y: int = 0):
+func _init(x: int = 0, y: int = 0):
 	
-	# self.x = x
-	# self.y = y
-	
+	position.x = x
+	position.y = y
+
 	return;
 
 func move(x: int, y: int):
 	
 	# Change later for autoload.
 	
-	self.y += (x - y) * 8
-	self.x += (x + y) * 16
+	position.y += (x - y) * 8
+	position.x += (x + y) * 16
 	
 	return
 
