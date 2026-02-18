@@ -8,9 +8,7 @@ func _init(x: int = 0, y: int = 0):
 	position.x = x
 	position.y = y
 
-	return;
-
-func move(x: int, y: int):
+func move(x: int, y: int, _anim: int = 0):
 	
 	# Change later for autoload.
 	
