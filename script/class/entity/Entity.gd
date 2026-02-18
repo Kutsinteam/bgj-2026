@@ -22,4 +22,5 @@ func hurt(amount: int) -> void:
 		
 # func _physics_process(delta: float) -> void:		# TODO: Friction
 	
+	# velocity.x += 10 * delta
 	# move_and_slide()
