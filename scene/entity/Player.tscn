@@ -3,16 +3,36 @@
 [ext_resource type="Script" uid="uid://x6d4ybalequd" path="res://script/class/entity/player.gd" id="1_277kt"]
 [ext_resource type="Texture2D" uid="uid://cqfgruvuoxrts" path="res://icon.svg" id="1_ar70u"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_277kt"]
-radius = 16.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_277kt"]
+size = Vector2(12, 12)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(139, 68)
 script = ExtResource("1_277kt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_277kt")
+shape = SubResource("RectangleShape2D_277kt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.125, 0.125)
 texture = ExtResource("1_ar70u")
+
+[node name="UP" type="RayCast2D" parent="."]
+position = Vector2(0, -8)
+target_position = Vector2(0, -8)
+hit_from_inside = true
+
+[node name="DOWN" type="RayCast2D" parent="."]
+position = Vector2(0, 8)
+target_position = Vector2(0, 8)
+hit_from_inside = true
+
+[node name="RIGHT" type="RayCast2D" parent="."]
+position = Vector2(8, 0)
+target_position = Vector2(8, 0)
+hit_from_inside = true
+
+[node name="LEFT" type="RayCast2D" parent="."]
+position = Vector2(-8, 0)
+target_position = Vector2(-8, 0)
+hit_from_inside = true
