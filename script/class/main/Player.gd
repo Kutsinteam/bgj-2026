@@ -9,40 +9,42 @@ func _move(dir: Vector2):
 	time = 0 # Reset
 	global_position += dir * GAME.TILE_SIZE
 
+func _dash(dir: Vector2): 
+	if (Input.is_action_just_pressed("DASH") && (!$UP.is_colliding() && !$DOWN.is_colliding() && 
+		!$LEFT.is_colliding() && !$RIGHT.is_colliding())): # need to improve dash limitation to direction
+		global_position += 3 * dir * GAME.TILE_SIZE
+
 func _physics_process(_delta: float) -> void:
 	
+	# Continuous Movement
 	time += _delta
 	if (time >= GAME.getTickSpeed() - SPEEDMODIFIER):
 		_move(direction)
 	
-	if (Input.is_action_just_pressed("UP") && !$UP.is_colliding()):
-		
-		newdir = Vector2(0, -1)
-		if (direction != newdir):
-			direction = newdir
-			_move(direction)
+	# Movement
+	if (Input.is_action_just_pressed("UP") && direction != Vector2.UP && !$UP.is_colliding()):
+		direction = Vector2.UP
+		_move(direction)
 			
-	elif (Input.is_action_just_pressed("DOWN") && !$DOWN.is_colliding()):
-		
-		newdir = Vector2(0, 1)
-		if (direction != newdir):
-			direction = newdir
-			_move(direction)
+	elif (Input.is_action_just_pressed("DOWN") && direction != Vector2.DOWN && !$DOWN.is_colliding()):
+		direction = Vector2.DOWN
+		_move(direction)
 			
-	elif (Input.is_action_just_pressed("LEFT") && !$LEFT.is_colliding()):
-		
-		newdir = Vector2(-1, 0)
-		if (direction != newdir):
-			direction = newdir
-			_move(direction)
+	elif (Input.is_action_just_pressed("LEFT") && direction != Vector2.LEFT && !$LEFT.is_colliding()):
+		direction = Vector2.LEFT
+		_move(direction)
 			
-	elif (Input.is_action_just_pressed("RIGHT") && !$RIGHT.is_colliding()):
-		
-		newdir = Vector2(1, 0)
-		if (direction != newdir):
-			direction = newdir
-			_move(direction)
-			
+	elif (Input.is_action_just_pressed("RIGHT") && direction != Vector2.DOWN && !$RIGHT.is_colliding()):
+		direction = Vector2.RIGHT
+		_move(direction)
+	
+	_dash(direction)
+	
+	# Collision
+	if $UP.is_colliding() || $DOWN.is_colliding() || $LEFT.is_colliding() || $RIGHT.is_colliding():
+		move_and_collide(direction)
+	
 func _process(delta: float) -> void:
+	# Movement and Movement Smoothening
 	SPRITE.position = (SPRITE.position + (position - SPRITE.position) * (1 - pow(0.5, delta * GAME.FRAMERATE)))
 	

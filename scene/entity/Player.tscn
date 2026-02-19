@@ -11,30 +11,34 @@ scale = Vector2(4, 4)
 script = ExtResource("1_277kt")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_277kt")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 top_level = true
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_ar70u")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_277kt")
+
 [node name="UP" type="RayCast2D" parent="."]
 position = Vector2(0, -4)
 target_position = Vector2(0, -8)
+collision_mask = 2
 hit_from_inside = true
 
 [node name="DOWN" type="RayCast2D" parent="."]
 position = Vector2(0, 4)
 target_position = Vector2(0, 8)
+collision_mask = 2
 hit_from_inside = true
 
 [node name="RIGHT" type="RayCast2D" parent="."]
 position = Vector2(4, 0)
 target_position = Vector2(8, 0)
+collision_mask = 2
 hit_from_inside = true
 
 [node name="LEFT" type="RayCast2D" parent="."]
 position = Vector2(-4, 0)
 target_position = Vector2(-8, 0)
+collision_mask = 2
 hit_from_inside = true
