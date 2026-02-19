@@ -10,21 +10,29 @@ var time: float = 0.0
 func _physics_process(_delta: float) -> void:
 	
 	time += _delta
-	if (time >= .1):
+	if (time >= .5):
 		time = 0
 		_move(direction)
 	
 	if (Input.is_action_just_pressed("UP") && !$UP.is_colliding()):
 		direction = Vector2(0, -1)
+		time = 0
+		_move(direction)
 		
 	if (Input.is_action_just_pressed("DOWN") && !$DOWN.is_colliding()):
 		direction = Vector2(0, 1)
+		time = 0
+		_move(direction)
 		
 	if (Input.is_action_just_pressed("LEFT") && !$LEFT.is_colliding()):
 		direction = Vector2(-1, 0)
+		time = 0
+		_move(direction)
 		
 	if (Input.is_action_just_pressed("RIGHT") && !$RIGHT.is_colliding()):
 		direction = Vector2(1, 0)
+		time = 0
+		_move(direction)
 		
 func _move(dir: Vector2):
 	global_position += dir * GAME.TILE_SIZE
