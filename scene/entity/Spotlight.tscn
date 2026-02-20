@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccgb42v4vi7g5"]
+
+[ext_resource type="Script" uid="uid://b5714s08rs8gt" path="res://script/class/entity/Spotlight.gd" id="1_e3d55"]
+
+[node name="Spotlight" type="CharacterBody2D"]
+script = ExtResource("1_e3d55")
