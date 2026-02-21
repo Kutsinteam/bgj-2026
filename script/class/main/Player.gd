@@ -53,9 +53,6 @@ func _physics_process(_delta: float) -> void:
 		isMoving = false
 	_dash(direction)
 	
-	# Collision
-	if $UP.is_colliding() || $DOWN.is_colliding() || $LEFT.is_colliding() || $RIGHT.is_colliding():
-		move_and_collide(direction)
 	
 func _process(delta: float) -> void:
 	# Movement and Movement Smoothening
