@@ -2,10 +2,9 @@ extends Entity
 class_name Player
 
 var direction = Vector2.RIGHT
-var newdir: Vector2
 var time: float = 0.0
-var canDash = true
-var isMoving = false
+var can_dash = true
+var is_moving = false
 @onready var input_map = { # Makes the fucking input readable
 	"UP" : {
 		"direction": Vector2.UP,
@@ -48,12 +47,12 @@ func _dash(dir: Vector2):
 		if(action["raycast"].is_colliding()):
 			colliding = true
 	
-	if(canDash == true):
+	if(can_dash):
 		if (Input.is_action_just_pressed("DASH") and not colliding): # need to improve dash limitation to direction
 			global_position += 3 * dir * GAME.TILE_SIZE
-			canDash = false
+			can_dash = false
 			await get_tree().create_timer(4.0).timeout
-			canDash = true
+			can_dash = true
 		
 
 func _physics_process(_delta: float) -> void:
@@ -67,12 +66,12 @@ func _physics_process(_delta: float) -> void:
 	for input in input_map:
 		var action = input_map[input]
 		
-		if(not isMoving):
-			if(Input.is_action_pressed(input) and direction != action["direction"] and not action["raycast"].is_colliding()):
+		if(not is_moving):
+			if(Input.is_action_pressed(input)):
 				direction = action["direction"]
-				isMoving = true
+				is_moving = true
 				await get_tree().create_timer(0.2).timeout
-				isMoving = false
+				is_moving = false
 				break
 		_dash(direction)
 
