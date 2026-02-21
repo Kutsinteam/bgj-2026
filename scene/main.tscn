@@ -6,7 +6,7 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="walls" parent="." instance=ExtResource("2_hr7lf")]
+[node name="map" parent="." instance=ExtResource("2_hr7lf")]
 script = null
 
 [node name="Guard" parent="." instance=ExtResource("3_hr7lf")]

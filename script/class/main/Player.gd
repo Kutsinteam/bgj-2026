@@ -25,8 +25,20 @@ var isMoving = false
 	}}
 
 func _move(dir: Vector2):
-	time = 0 # Reset
-	global_position += dir * GAME.TILE_SIZE
+	time = 0 
+	var target_raycast: RayCast2D = null
+
+	for key in input_map:
+		if input_map[key]["direction"] == dir:
+			target_raycast = input_map[key]["raycast"]
+			break
+
+	if target_raycast != null:
+
+		target_raycast.force_raycast_update()
+
+	if not target_raycast.is_colliding():
+		global_position += dir * GAME.TILE_SIZE
 
 func _dash(dir: Vector2): 
 	var colliding = false
@@ -40,6 +52,8 @@ func _dash(dir: Vector2):
 		if (Input.is_action_just_pressed("DASH") and not colliding): # need to improve dash limitation to direction
 			global_position += 3 * dir * GAME.TILE_SIZE
 			canDash = false
+			await get_tree().create_timer(4.0).timeout
+			canDash = true
 		
 
 func _physics_process(_delta: float) -> void:
@@ -65,7 +79,3 @@ func _physics_process(_delta: float) -> void:
 func _process(delta: float) -> void:
 	# Movement and Movement Smoothening
 	SPRITE.position = (SPRITE.position + (position - SPRITE.position) * (1 - pow(0.5, delta * GAME.FRAMERATE)))
-
-#  dash cooldown
-func _on_timer_timeout() -> void:
-	canDash = true
