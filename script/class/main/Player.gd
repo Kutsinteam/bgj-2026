@@ -5,6 +5,7 @@ var direction = Vector2.RIGHT
 var newdir: Vector2
 var time: float = 0.0
 var canDash = true
+var isMoving = false
 func _move(dir: Vector2):
 	time = 0 # Reset
 	global_position += dir * GAME.TILE_SIZE
@@ -26,22 +27,30 @@ func _physics_process(_delta: float) -> void:
 		_move(direction)
 	
 	# Movement
-	if (Input.is_action_just_pressed("UP") && direction != Vector2.UP && !$UP.is_colliding()):
+	if (Input.is_action_just_pressed("UP") && direction != Vector2.UP && !$UP.is_colliding() 
+	&& isMoving == false):
 		direction = Vector2.UP
-		_move(direction)
+		await get_tree().create_timer(0.2).timeout
+		isMoving = false
 			
-	elif (Input.is_action_just_pressed("DOWN") && direction != Vector2.DOWN && !$DOWN.is_colliding()):
+	elif (Input.is_action_just_pressed("DOWN") && direction != Vector2.DOWN && !$DOWN.is_colliding()
+	 && isMoving == false):
 		direction = Vector2.DOWN
-		_move(direction)
+		await get_tree().create_timer(0.2).timeout
+		isMoving = false
 			
-	elif (Input.is_action_just_pressed("LEFT") && direction != Vector2.LEFT && !$LEFT.is_colliding()):
+	elif (Input.is_action_just_pressed("LEFT") && direction != Vector2.LEFT && !$LEFT.is_colliding() 
+	&& isMoving == false):
 		direction = Vector2.LEFT
-		_move(direction)
+		await get_tree().create_timer(0.2).timeout
+		isMoving = false
 			
-	elif (Input.is_action_just_pressed("RIGHT") && direction != Vector2.DOWN && !$RIGHT.is_colliding()):
+	elif (Input.is_action_just_pressed("RIGHT") && direction != Vector2.RIGHT && !$RIGHT.is_colliding()
+	&& isMoving == false):
 		direction = Vector2.RIGHT
-		_move(direction)
-	
+		isMoving = true
+		await get_tree().create_timer(0.2).timeout
+		isMoving = false
 	_dash(direction)
 	
 	# Collision
