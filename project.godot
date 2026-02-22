@@ -11,19 +11,19 @@ config_version=5
 [application]
 
 config/name="Brackey's Game Jam 2026"
-run/main_scene="uid://cdrp5geeqx8n2"
+run/main_scene="uid://dgkn8hb1x01q4"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Objects="*res://script/Objects.gd"
 GAME="*res://script/autoload/GAME.gd"
+Objects="*res://script/Objects.gd"
 
 [display]
 
-window/size/viewport_width=500
-window/size/viewport_height=300
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/size/window_width_override=1000
 window/size/window_height_override=600
 window/per_pixel_transparency/allowed=true

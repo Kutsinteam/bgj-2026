@@ -40,15 +40,16 @@ func _move(dir: Vector2):
 		global_position += dir * GAME.TILE_SIZE
 
 func _dash(dir: Vector2): 
-	var colliding = false
+	var colliding: RayCast2D
 	for input in input_map:
 		var action = input_map[input]
 		
-		if(action["raycast"].is_colliding()):
-			colliding = true
+		if(action["direction"] == dir):
+			colliding = input_map[input]["raycast"]
+			break
 	
 	if(can_dash):
-		if (Input.is_action_just_pressed("DASH") and not colliding): # need to improve dash limitation to direction
+		if (Input.is_action_just_pressed("DASH") and not colliding.is_colliding()): # need to improve dash limitation to direction
 			global_position += 3 * dir * GAME.TILE_SIZE
 			can_dash = false
 			await get_tree().create_timer(4.0).timeout
