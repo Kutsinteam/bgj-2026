@@ -5,6 +5,7 @@ var direction = Vector2.RIGHT
 var time: float = 0.0
 var can_dash = true
 var is_moving = false
+
 @onready var input_map = { # Makes the fucking input readable
 	"UP" : {
 		"direction": Vector2.UP,
@@ -22,7 +23,11 @@ var is_moving = false
 		"direction": Vector2.RIGHT,
 		"raycast": $RIGHT
 	}}
-
+	
+func _ready() -> void:
+	health = 999
+	MAX_HEALTH = 999
+	
 func _move(dir: Vector2):
 	time = 0 
 	var target_raycast: RayCast2D = null
@@ -76,6 +81,11 @@ func _physics_process(_delta: float) -> void:
 				break
 		_dash(direction)
 
+var render_time = 0
 func _process(delta: float) -> void:
 	# Movement and Movement Smoothening
+	render_time += delta
+	#print((1 + sin(render_time))/2)
+	if (since_hurt != 0): 
+		$Sprite2D.modulate.a = 1 - (1 + sin(8*render_time))*.25
 	SPRITE.position = (SPRITE.position + (position - SPRITE.position) * (1 - pow(0.5, delta * GAME.FRAMERATE)))

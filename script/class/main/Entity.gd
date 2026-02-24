@@ -24,11 +24,21 @@ func _ready() -> void:
 	if (MAIN.name != "root"):
 		print(name + " not in 'Main'!")
 
+var since_hurt: int = 0
 func hurt(amount: int) -> void:
-	health -= amount
+	var t = Time.get_ticks_msec() 
+	if ((t - since_hurt) > 900):
+		health -= amount
+		since_hurt = t
+		
 	if (health <= 0):
 		queue_free()
 		return
+
+# In case we need to move some enemies around.		
+func teleport(pos: Vector2) -> void:
+	velocity = Vector2.ZERO
+	position = pos
 		
 	# Maybe add more behavior here.
 		
