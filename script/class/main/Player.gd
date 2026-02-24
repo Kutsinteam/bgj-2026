@@ -1,7 +1,7 @@
 extends Entity
 class_name Player
 
-var direction = Vector2.RIGHT
+var direction = Vector2.ZERO
 var time: float = 0.0
 var can_dash = true
 var is_moving = false
@@ -40,9 +40,8 @@ func _move(dir: Vector2):
 	if target_raycast != null:
 
 		target_raycast.force_raycast_update()
-
-	if not target_raycast.is_colliding():
-		global_position += dir * GAME.TILE_SIZE
+		if not target_raycast.is_colliding():
+			global_position += dir * GAME.TILE_SIZE
 
 func _dash(dir: Vector2): 
 	var colliding: RayCast2D
@@ -80,12 +79,3 @@ func _physics_process(_delta: float) -> void:
 				is_moving = false
 				break
 		_dash(direction)
-
-var render_time = 0
-func _process(delta: float) -> void:
-	# Movement and Movement Smoothening
-	render_time += delta
-	#print((1 + sin(render_time))/2)
-	if (since_hurt != 0): 
-		$Sprite2D.modulate.a = 1 - (1 + sin(8*render_time))*.25
-	SPRITE.position = (SPRITE.position + (position - SPRITE.position) * (1 - pow(0.5, delta * GAME.FRAMERATE)))
