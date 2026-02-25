@@ -1,11 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgkn8hb1x01q4"]
+[gd_scene load_steps=4 format=3 uid="uid://cdrp5geeqx8n2"]
 
 [ext_resource type="PackedScene" uid="uid://h2216l6guho8" path="res://scene/entity/Player.tscn" id="1_h6nst"]
 [ext_resource type="PackedScene" uid="uid://drp553kg2286v" path="res://scene/tile/walls.tscn" id="2_hr7lf"]
 [ext_resource type="PackedScene" uid="uid://172gh0yqyusc" path="res://scene/entity/Guard.tscn" id="3_hr7lf"]
 
 [node name="Main" type="Node2D"]
-position = Vector2(1, 0)
 
 [node name="map" parent="." instance=ExtResource("2_hr7lf")]
 script = null

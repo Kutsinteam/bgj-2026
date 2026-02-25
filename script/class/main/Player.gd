@@ -71,7 +71,7 @@ func _physics_process(_delta: float) -> void:
 			if(Input.is_action_pressed(input)):
 				direction = action["direction"]
 				is_moving = true
-				await get_tree().create_timer(0.2).timeout
+				await get_tree().create_timer(0.1).timeout
 				is_moving = false
 				break
 		_dash(direction)
