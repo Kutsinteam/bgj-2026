@@ -65,6 +65,11 @@ DASH={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Spawners"
+2d_physics/layer_2="Wall Collisions"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
